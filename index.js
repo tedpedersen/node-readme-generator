@@ -112,7 +112,7 @@ async function init() {
         const readMe = generateReadMe(response);
 
         await writeFile("output/README.md", readMe);
-        console.log("Success! Your README.md file was created in the /output/ directory.");
+        console.log("Success! Your README.md file was created in the /output directory.");
     } catch (err){
         console.log(err);
     }

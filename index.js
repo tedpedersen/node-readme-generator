@@ -42,7 +42,7 @@ function promptUser() {
         {
         type: 'input',
         name: 'contribution',
-        message: 'Please enter project contribution duidelines',
+        message: 'Please enter project contribution guidelines',
         default: 'Project Contribtion Guidlines',
         },
         {

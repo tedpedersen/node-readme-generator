@@ -29,7 +29,7 @@ A program to generate readme.md files for projects.
 
 #### Useage Info:
 
-[Walkthrough Video](https://drive.google.com/file/d/1bsEfek3dbzJGZLsfanhgGVGS3dEGgkdJ/view)
+[Walkthrough Video](https://drive.google.com/file/d/1LVxiU-KCo5rmqUrQypoFByxfuv_OiFfS/view)
 
 1. Run the command: $ node index.js
 2. Answer the prompted questions

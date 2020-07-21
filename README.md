@@ -19,6 +19,8 @@ A program to generate readme.md files for projects.
 
 #### Useage Info:
 
+[Walkthrough Video](https://drive.google.com/file/d/1bsEfek3dbzJGZLsfanhgGVGS3dEGgkdJ/view)
+
 1. Run the command: $ node index.js
 2. Answer the prompted questions
 3. Your README.md file will be created in the directory /output 

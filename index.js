@@ -114,7 +114,6 @@ Copyright: ${year} , ${response.author}
 
 ${licensetxt}
 
-
 ### Table Of Contents
 
 [Description](#description)

@@ -103,9 +103,9 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 ###License:
 ![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
 
-Copyright: ${year}
+Copyright: ${year} , ${response.author}
 
-${licensetxt} ${response.author}
+${licensetxt}
 
 
 ### Table Of Contents

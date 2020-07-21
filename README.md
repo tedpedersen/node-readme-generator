@@ -1,5 +1,5 @@
 # Node README Generator
-###License:
+### License:
 ![License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 
 Copyright: 2020, Ted Pedersen

@@ -2,6 +2,7 @@
 var inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
+const { restoreDefaultPrompts } = require('inquirer');
 
 const writeFile = util.promisify(fs.writeFile);
 
@@ -13,8 +14,14 @@ function promptUser() {
         {
         type: 'input',
         name: 'title',
-        message: 'Please enter a project title.',
-        default: 'Project Title',
+        message: 'Please enter a project title:',
+        default: 'Project title',
+        },
+        {
+        type: 'input',
+        name: 'author',
+        message: 'Please enter a project author:',
+        default: 'Project author',
         },
         {
         type: "checkbox",
@@ -22,52 +29,84 @@ function promptUser() {
         choices: [
             "Apache",
             "MIT",
-            "ISC",
-            "GNU GPLv3"
+            "ISC"
         ],
         name: "license"
         },
         {
         type: 'input',
         name: 'description',
-        message: 'Please enter a project description',
-        default: 'Project Description',
+        message: 'Please enter a project description:',
+        default: 'Project description',
         },
         {
         type: 'input',
         name: 'usage',
-        message: 'Please enter project usage info',
-        default: 'Project Usage info',
+        message: 'Please enter project usage info:',
+        default: 'Project usage info',
         },
         {
         type: 'input',
         name: 'contribution',
-        message: 'Please enter project contribution guidelines',
-        default: 'Project Contribtion Guidlines',
+        message: 'Please enter project contribution guidelines:',
+        default: 'Project contribtion guidlines',
         },
         {
         type: 'input',
         name: 'test',
-        message: 'Please enter a project test instructions',
-        default: 'Project Test Instructions',
+        message: 'Please enter a project test instructions:',
+        default: 'Project test instructions',
         },
         {
         type: 'input',
         name: 'github',
-        message: 'Please your Github profile name',
+        message: 'Please your Github profile name:',
         },
         {
         type: 'input',
         name: 'email',
-        message: 'Please your email address',
+        message: 'Please your email address:',
         },
     ]);
 } 
 
-
 const generateReadMe = (response) => {
+    var today = new Date();
+    var year = today.getFullYear();
+    if(response.license == "MIT"){
+            var licensetxt = 
+`Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+}else if(response.license == "Apache"){
+    var licensetxt = 
+`Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.`
+}else if(response.license == "ISC"){
+    var licensetxt =
+`Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
+};
     return `# ${response.title}
+###License:
 ![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
+
+Copyright: ${year}
+
+${licensetxt} ${response.author}
+
 
 ### Table Of Contents
 
@@ -99,10 +138,12 @@ ${response.test}
 
 #### Questions:
 
+Contact me with any questions:
+
 [https://github.com/${response.github}](https://github.com/${response.github})
 
 
-Email: ${response.email}`;
+Email Me: ${response.email}`;
 }
   
 async function init() {

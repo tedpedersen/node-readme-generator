@@ -36,6 +36,8 @@ none yet
 
 #### Questions:
 
+Contact me with any questions:
+
 [https://github.com/tedpedersen](https://github.com/tedpedersen)
 
 
